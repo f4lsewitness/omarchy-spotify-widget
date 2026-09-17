@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "isra.spotify-widget",
+  "name": "Spotify Floating Widget",
+  "version": "1.0.0",
+  "author": "isra",
+  "description": "Now-playing card that opens as a real draggable window from the Omarchy menu, with album art and playback controls",
+  "kinds": [
+    "panel"
+  ],
+  "entryPoints": {
+    "panel": "Widget.qml"
+  }
+}
