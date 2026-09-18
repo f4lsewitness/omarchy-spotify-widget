@@ -25,6 +25,17 @@ everything else.
   matches your `looknfeel.lua`
 - Opens/closes on demand (from the Omarchy menu or an IPC call) rather than
   auto-showing — it behaves like an app you launch, not a persistent overlay
+- Lyrics, in a second, independently draggable window (a lyrics-icon button
+  on the card toggles it) — styled after Spotify's own lyrics view: a
+  blurred, tinted backdrop sampled from the album art (darkened to suit the
+  cover's own brightness), large bold text, and, when Spotify's desktop app
+  is installed locally, its actual "Spotify Mix" font (extracted once from
+  your own install, cached outside this repo, never bundled — falls back to
+  a system font otherwise). Lyrics come from [lrclib.net](https://lrclib.net)
+  (free, no API key); synced (LRC) lyrics highlight and auto-scroll with
+  playback, unsynced ones render as plain scrollable text. Closing the main
+  card closes the lyrics window with it; closing only the lyrics window
+  leaves the card open.
 
 ## Install
 
@@ -88,6 +99,13 @@ dim_special = 0.35,
 
 - [Omarchy](https://omarchy.org/) / `omarchy-shell` (Quickshell)
 - Spotify running with MPRIS (the desktop app, `spotifyd`, or `spotify-player`)
+- For lyrics: `curl` and ImageMagick (`magick`) — used to fetch lyrics from
+  lrclib.net and sample the album art's average color for the background
+  tint. Optional, for the real Spotify font specifically: the Spotify
+  desktop app installed locally, plus `unzip` and `woff2_decompress` (the
+  `woff2` package) to extract and convert it. Without any of these, lyrics
+  and the blurred background still work; only the font falls back to a
+  system sans.
 
 ## License
 
