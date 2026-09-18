@@ -72,16 +72,28 @@ omarchy-shell shell summon isra.spotify-widget '{}'   # open
 omarchy-shell shell hide isra.spotify-widget          # close
 ```
 
+### Lyrics
+
+Click the lyrics-icon button on the now-playing card (next to repeat, at the
+end of the control row) to open the lyrics window. It's a second, separate
+floating window — drag it wherever you like, resize it, close it on its own
+without touching the card. Click any line to seek playback to that line's
+timestamp. There's no separate menu entry or IPC target for it; it only
+opens from that button on an already-open card.
+
 ## Optional Hyprland tweaks
 
 These aren't required — the widget works as a normal floating window without
-them — but they're a nice combo if you want it to live on a dedicated,
-scratchpad-style workspace instead of your regular ones (add to
-`~/.config/hypr/hyprland.lua`):
+them — but they're a nice combo if you want it (and/or the lyrics window) to
+live on a dedicated, scratchpad-style workspace instead of your regular ones
+(add to `~/.config/hypr/hyprland.lua`). Hyprland calls this a *special
+workspace*; the example below names it `widgets`, but that's just a name —
+call it whatever you like as long as the rules and the toggle bind agree:
 
 ```lua
--- Float this window and park it on a hidden "widgets" special workspace.
+-- Float these windows and park them on a hidden "widgets" special workspace.
 o.window({ class = "^org.quickshell$", title = "^Spotify Widget$" }, { workspace = "special:widgets" })
+o.window({ class = "^org.quickshell$", title = "^Spotify Lyrics$" }, { workspace = "special:widgets" })
 o.window({ workspace = "special:widgets" }, { float = true, opacity = "1.0 1.0 override", no_dim = true })
 ```
 
